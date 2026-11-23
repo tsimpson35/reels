@@ -76,8 +76,8 @@ p{font-size:20px;line-height:1.35;font-weight:500}
 
 <section class="slide" style="background:#0E0E14">
   <div class="k a" style="color:#FFC845">joinlinks leaderboard</div>
-  <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:20px;font-weight:700;opacity:.8">all time</div><div class="huge" style="font-size:150px;color:#FFC845">#25</div><p>top user on JoinLinks</p></div>
-  <div class="stats a3"><div><b>2,500</b><span>points</span></div><div><b>2</b><span>level</span></div></div>
+  <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:30px;font-weight:900">TOP</div><div class="huge" style="font-size:150px;color:#FFC845">1%</div><p>of users on JoinLinks</p></div>
+  <div class="stats a3"><div><b>#25</b><span>leaderboard</span></div><div><b>2,500</b><span>points</span></div><div><b>2</b><span>level</span></div></div>
   <p class="a4" style="margin-top:14px;font-size:17px"><b>#4</b> most-liked poster on JoinLinks. Top 1% of 1,151 people posting this year.</p>
 </section>
 
@@ -138,7 +138,7 @@ async function makeCard(){
  x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came for community.',80,320);x.fillText('Built one.',80,425);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
- [['#25','top user on JoinLinks'],['#4','most-liked poster, top 1%'],['23','posts, 460 likes']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
+ [['Top 1%','of users on JoinLinks'],['#4','most-liked poster, top 1%'],['23','posts, 460 likes']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
  x.fillStyle='#111';x.beginPath();x.roundRect(80,1740,920,110,55);x.fill();x.fillStyle='#fff';x.font='800 46px Helvetica, Arial';x.textAlign='center';x.fillText('joinlinks.app',540,1812);
  blob=await new Promise(r=>c.toBlob(r,'image/png'));document.getElementById('cardimg').src=URL.createObjectURL(blob);
 }
