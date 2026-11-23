@@ -138,7 +138,7 @@ async function makeCard(){
  x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came for community.',80,320);x.fillText('Built one.',80,425);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
- [['Top 1%','of users on JoinLinks'],['#4','most-liked poster, top 1%'],['23','posts, 460 likes']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
+ [['1%','top users on JoinLinks'],['#4','most-liked poster, top 1%'],['23','posts, 460 likes']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
  x.fillStyle='#111';x.beginPath();x.roundRect(80,1740,920,110,55);x.fill();x.fillStyle='#fff';x.font='800 46px Helvetica, Arial';x.textAlign='center';x.fillText('joinlinks.app',540,1812);
  blob=await new Promise(r=>c.toBlob(r,'image/png'));document.getElementById('cardimg').src=URL.createObjectURL(blob);
 }
