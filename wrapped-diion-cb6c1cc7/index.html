@@ -69,7 +69,7 @@ p{font-size:20px;line-height:1.35;font-weight:500}
   <div class="k a" style="color:#FFC845">joinlinks leaderboard</div>
   <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:20px;font-weight:700;opacity:.8">all time</div><div class="huge" style="font-size:150px;color:#FFC845">#23</div><p>top user on JoinLinks</p></div>
   <div class="stats a3"><div><b>2,516</b><span>points</span></div><div><b>2</b><span>level</span></div></div>
-  <p class="a4" style="margin-top:14px;font-size:17px">Top 25 all time. Ron's 16 points behind you.</p>
+  <p class="a4" style="margin-top:14px;font-size:17px"><b>#1</b> most-liked AND most-commented poster on JoinLinks. Top 1% of 1,151 people posting this year.</p>
 </section>
 
 <section class="slide" style="background:#000"><video class="bg" src="chat0.mp4" muted playsinline loop></video><div class="shade"></div>
@@ -124,7 +124,7 @@ async function makeCard(){
  x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came for the vibes.',80,320);x.fillText('Built the crew.',80,425);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
- [['#23','top user on JoinLinks'],['84','posts, 1,191 likes'],['17','new friends in one night']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
+ [['#23','top user on JoinLinks'],['#1','most-liked poster, top 1%'],['17','new friends in one night']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
  x.fillStyle='#111';x.beginPath();x.roundRect(80,1740,920,110,55);x.fill();x.fillStyle='#fff';x.font='800 46px Helvetica, Arial';x.textAlign='center';x.fillText('joinlinks.app',540,1812);
  blob=await new Promise(r=>c.toBlob(r,'image/png'));document.getElementById('cardimg').src=URL.createObjectURL(blob);
 }
