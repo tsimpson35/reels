@@ -69,9 +69,9 @@ p{font-size:20px;line-height:1.35;font-weight:500}
 
 <section class="slide" style="background:#0E0E14">
   <div class="k a" style="color:#FFC845">your 2026 ranking</div>
-  <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:30px;font-weight:900">TOP</div><div class="huge" style="font-size:150px;color:#FFC845">7%</div><p>of users on JoinLinks for showing up</p></div>
-  <div class="stats a3"><div><b>10</b><span>Links you went to</span></div><div><b>6</b><span>Links you hosted</span></div></div>
-  <p class="a4" style="margin-top:14px;font-size:17px">Out of 2,291 people RSVPing on JoinLinks this year.</p>
+  <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:30px;font-weight:900">TOP</div><div class="huge" style="font-size:150px;color:#FFC845">10%</div><p>of organizers on JoinLinks</p></div>
+  <div class="stats a3"><div><b>18</b><span>came back 2+ times</span></div><div><b>~25</b><span>RSVPs per Link</span></div><div><b>Top 7%</b><span>for showing up</span></div></div>
+  <p class="a4" style="margin-top:14px;font-size:17px">#12 of 146 organizers for guests who keep coming back.</p>
 </section>
 
 <section class="slide" style="background:#E8762B" id="last">
@@ -113,7 +113,7 @@ async function makeCard(){
  x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.font='900 70px Helvetica, Arial';x.fillText('Came to find my people.',80,300);x.fillText('Messed around and',80,385);x.fillText('created one.',80,470);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
- [['7%','top users for showing up'],['5','books, 5 meetings'],['54','people read with me']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
+ [['10%','top organizers on JoinLinks'],['5','books, 5 meetings'],['54','people read with me']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
  x.fillStyle='#111';x.beginPath();x.roundRect(80,1740,920,110,55);x.fill();x.fillStyle='#fff';x.font='800 46px Helvetica, Arial';x.textAlign='center';x.fillText('joinlinks.app',540,1812);
  blob=await new Promise(r=>c.toBlob(r,'image/png'));document.getElementById('cardimg').src=URL.createObjectURL(blob);
 }
