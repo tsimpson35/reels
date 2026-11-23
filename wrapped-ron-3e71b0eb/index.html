@@ -25,7 +25,7 @@ p{font-size:20px;line-height:1.35;font-weight:500}
 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.05) 35%,rgba(0,0,0,.75) 100%);z-index:0}.slide>*{position:relative}.slide>.bg,.slide>.shade{position:absolute}#fabs{position:absolute;left:12px;right:12px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:8;display:flex;gap:10px}#fabs[hidden]{display:none}#fabs button{flex:1;border:0;border-radius:40px;padding:15px 10px;font-size:16px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.35);white-space:nowrap;cursor:pointer}#fab{background:#fff;color:#111}#fabjl{background:#E8762B;color:#fff}#toast{position:absolute;left:20px;right:20px;bottom:calc(90px + env(safe-area-inset-bottom,0px));z-index:9;background:rgba(17,17,17,.92);color:#fff;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.35;text-align:center}
 #ctls{position:absolute;top:calc(22px + env(safe-area-inset-top));right:12px;z-index:7;display:flex;gap:8px}#ctls button{background:rgba(0,0,0,.45);border:0;color:#fff;border-radius:20px;width:40px;height:34px;font-size:16px;cursor:pointer}
 .th{display:flex;gap:10px;margin-top:12px;align-items:flex-start}.th img,.th .av{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none}.th .av{background:#E8762B;display:flex;align-items:center;justify-content:center;font-weight:800}.th span{font-size:14px}.th>div:last-child{background:rgba(255,255,255,.08);border-radius:14px;padding:9px 12px;font-size:15px;line-height:1.35}.th b{display:block;font-size:13px;margin-bottom:2px}.th.r{margin-left:26px}.th:first-of-type{margin-top:18px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:20px;padding:18px 10px;text-align:center}.stats div+div{border-left:1px solid rgba(255,255,255,.2)}.stats b{display:block;font-size:40px;font-weight:900;line-height:1}.stats span{display:block;font-size:14px;font-weight:600;margin-top:6px;opacity:.85}
+.stats{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:20px;padding:18px 10px;text-align:center}.stats div+div{border-left:1px solid rgba(255,255,255,.2)}.stats b{display:block;font-size:40px;font-weight:900;line-height:1}.stats span{display:block;font-size:14px;font-weight:600;margin-top:6px;opacity:.85}
 .photo{width:100%;border-radius:18px;object-fit:cover}
 .tap{position:absolute;top:0;bottom:0;z-index:4}.tap.l{left:0;width:30%}.tap.r{right:0;width:70%}
 .btn{display:block;width:100%;border:0;border-radius:40px;padding:18px;font-size:18px;font-weight:800;margin-top:12px;position:relative;z-index:6}
@@ -72,6 +72,13 @@ p{font-size:20px;line-height:1.35;font-weight:500}
   <div class="q2 a" style="margin-top:14px;font-size:14px;opacity:.75">"What's y'all's favorite part of the collective?"</div>
   <div class="th a2"><img src="av_nicole.jpg" alt=""><div><b>Nicole</b><span>It's a sense of belonging.</span></div></div><div class="th r a3"><img src="av_mello.jpg" alt=""><div><b>Mello</b><span>Folks here feel safe.</span></div></div>
   <p class="a4" style="margin-top:auto;font-size:18px">You made people feel like they belong.</p>
+</section>
+
+<section class="slide" style="background:#0E0E14">
+  <div class="k a" style="color:#FFC845">joinlinks leaderboard</div>
+  <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:20px;font-weight:700;opacity:.8">all time</div><div class="huge" style="font-size:150px;color:#FFC845">#25</div><p>top user on JoinLinks</p></div>
+  <div class="stats a3"><div><b>2,500</b><span>points</span></div><div><b>2</b><span>level</span></div></div>
+  <p class="a4" style="margin-top:14px;font-size:17px">Just 16 points behind Diion. Top 25 is yours to keep.</p>
 </section>
 
 <section class="slide" style="background:#000"><img class="bg" src="beach2_crop.jpg" alt="Ron with friends at the beach"><div class="shade"></div>
@@ -131,7 +138,7 @@ async function makeCard(){
  x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came for community.',80,320);x.fillText('Built one.',80,425);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
- [['100','Collective members'],['23','posts, 460 likes'],['2x','Vegas with the crew']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
+ [['#25','top user on JoinLinks'],['100','Collective members'],['23','posts, 460 likes']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
  x.fillStyle='#111';x.beginPath();x.roundRect(80,1740,920,110,55);x.fill();x.fillStyle='#fff';x.font='800 46px Helvetica, Arial';x.textAlign='center';x.fillText('joinlinks.app',540,1812);
  blob=await new Promise(r=>c.toBlob(r,'image/png'));document.getElementById('cardimg').src=URL.createObjectURL(blob);
 }
