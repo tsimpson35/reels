@@ -22,7 +22,7 @@ h1{font-size:46px;line-height:1;font-weight:800;letter-spacing:-.02em}
 .huge{font-size:120px;font-weight:900;line-height:.9;letter-spacing:-.04em}
 p{font-size:20px;line-height:1.35;font-weight:500}
 .quote{background:rgba(0,0,0,.25);border-radius:18px;padding:18px;font-size:19px;line-height:1.4;font-weight:600}
-.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.05) 35%,rgba(0,0,0,.75) 100%);z-index:0}.slide>*{position:relative}.slide>.bg,.slide>.shade{position:absolute}#fab{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:8;background:#fff;color:#111;border:0;border-radius:40px;padding:15px 26px;font-size:17px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.35);white-space:nowrap;cursor:pointer}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.05) 35%,rgba(0,0,0,.75) 100%);z-index:0}.slide>*{position:relative}.slide>.bg,.slide>.shade{position:absolute}#fabs{position:absolute;left:12px;right:12px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:8;display:flex;gap:10px}#fabs[hidden]{display:none}#fabs button{flex:1;border:0;border-radius:40px;padding:15px 10px;font-size:16px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.35);white-space:nowrap;cursor:pointer}#fab{background:#fff;color:#111}#fabjl{background:#E8762B;color:#fff}#toast{position:absolute;left:20px;right:20px;bottom:calc(90px + env(safe-area-inset-bottom,0px));z-index:9;background:rgba(17,17,17,.92);color:#fff;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.35;text-align:center}
 #ctls{position:absolute;top:calc(22px + env(safe-area-inset-top));right:12px;z-index:7;display:flex;gap:8px}#ctls button{background:rgba(0,0,0,.45);border:0;color:#fff;border-radius:20px;width:40px;height:34px;font-size:16px;cursor:pointer}
 .th{display:flex;gap:10px;margin-top:12px;align-items:flex-start}.th img,.th .av{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none}.th .av{background:#E8762B;display:flex;align-items:center;justify-content:center;font-weight:800}.th span{font-size:14px}.th>div:last-child{background:rgba(255,255,255,.08);border-radius:14px;padding:9px 12px;font-size:15px;line-height:1.35}.th b{display:block;font-size:13px;margin-bottom:2px}.th.r{margin-left:26px}.th:first-of-type{margin-top:18px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:20px;padding:18px 10px;text-align:center}.stats div+div{border-left:1px solid rgba(255,255,255,.2)}.stats b{display:block;font-size:40px;font-weight:900;line-height:1}.stats span{display:block;font-size:14px;font-weight:600;margin-top:6px;opacity:.85}
@@ -98,6 +98,7 @@ p{font-size:20px;line-height:1.35;font-weight:500}
   <div class="k a" style="text-align:center">post it, you earned it</div>
   <img id="cardimg" class="a2" alt="Your shareable 2026 card" style="margin-top:18px">
   <button class="btn a3" id="share" style="background:#111;color:#fff">Share to Instagram Story</button>
+  <button class="btn a3" id="sharejl" style="background:#1B1B3A;color:#fff">Post to JoinLinks feed</button>
   <button class="btn a3" id="save" style="background:#fff;color:#111">Save image</button>
   <div class="note" id="msg">Tap share, pick Instagram, then Story. Add a link sticker to joinlinks.app 🔗</div>
 </section>
@@ -109,7 +110,7 @@ p{font-size:20px;line-height:1.35;font-weight:500}
   <button class="btn" style="background:#E8762B;color:#fff;width:auto;padding:18px 40px">Let's go ▶</button>
   <div style="font-size:13px;opacity:.6">Sound on 🔊</div>
 </div>
-<button id="fab" aria-label="Share to Instagram Story">Share to IG Story ↗</button><div id="ctls"><button id="back" aria-label="Back">⏮</button><button id="pp" aria-label="Pause">⏸</button><button id="ctl" aria-label="Mute">🔊</button></div><audio id="music" src="music.mp3" loop preload="auto"></audio>
+<div id="fabs"><button id="fab" aria-label="Share to Instagram Story">IG Story ↗</button><button id="fabjl" aria-label="Share to JoinLinks feed">Post to JoinLinks</button></div><div id="toast" hidden></div><div id="ctls"><button id="back" aria-label="Back">⏮</button><button id="pp" aria-label="Pause">⏸</button><button id="ctl" aria-label="Mute">🔊</button></div><audio id="music" src="music.mp3" loop preload="auto"></audio>
 </div>
 
 <script>
@@ -117,7 +118,7 @@ const slides=[...document.querySelectorAll('.slide')],DUR=5200;let i=0,t0=0,raf;
 const bars=document.getElementById('bars');slides.forEach(()=>{const d=document.createElement('div');d.innerHTML='<i></i>';bars.appendChild(d)});
 const fills=[...bars.querySelectorAll('i')];
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>{s.classList.toggle('on',k===i);const v=s.querySelector('video');if(v){if(k===i){v.currentTime=0;v.play().catch(()=>{})}else v.pause()}});fills.forEach((f,k)=>f.style.width=k<i?'100%':'0');t0=performance.now();cancelAnimationFrame(raf);
- document.querySelectorAll('.tap').forEach(e=>e.style.display=i===slides.length-1?'none':'block');const fb=document.getElementById('fab');if(fb)fb.hidden=i===slides.length-1;tick()}
+ document.querySelectorAll('.tap').forEach(e=>e.style.display=i===slides.length-1?'none':'block');const fb=document.getElementById('fabs');if(fb)fb.hidden=i===slides.length-1;tick()}
 let held=false,heldAt=0;function tick(){if(held){raf=requestAnimationFrame(tick);return}const p=(performance.now()-t0)/(+slides[i].dataset.d||DUR);fills[i].style.width=Math.min(100,p*100)+'%';if(p>=1&&i<slides.length-1){show(i+1);return}raf=requestAnimationFrame(tick)}
 document.getElementById('next').onclick=()=>show(i+1);document.getElementById('prev').onclick=()=>show(i-1);
 
@@ -156,4 +157,17 @@ let paused=false;const pp=document.getElementById('pp');
 pp.onclick=e=>{e.stopPropagation();paused=!paused;held=paused;if(paused){heldAt=performance.now();mu.pause();slides[i].querySelector('video')?.pause();pp.textContent='▶'}else{t0+=performance.now()-heldAt;mu.play().catch(()=>{});slides[i].querySelector('video')?.play().catch(()=>{});pp.textContent='⏸'}};
 document.getElementById('fab').onclick=e=>{e.stopPropagation();if(paused)pp.click();document.getElementById('share').click();show(slides.length-1)};
 document.getElementById('back').onclick=e=>{e.stopPropagation();if(paused)pp.click();show(i-1)};
+
+const CAPTION="My 2026 on JoinLinks \ud83d\udd25 Came for community. Built one.";
+function inApp(){return !!(window.ReactNativeWebView||(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.joinlinks))}
+function toApp(msg){const j=JSON.stringify(msg);if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(j);else window.webkit.messageHandlers.joinlinks.postMessage(msg)}
+function b64(){return new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(blob)})}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.hidden=false;clearTimeout(el._t);el._t=setTimeout(()=>el.hidden=true,3500)}
+const igShare=document.getElementById('share').onclick;
+document.getElementById('share').onclick=async e=>{if(inApp()){toApp({type:'shareStory',image:await b64(),link:'https://joinlinks.app'});return}igShare(e)};
+async function feedShare(e){e&&e.stopPropagation();if(inApp()){toApp({type:'shareFeed',image:await b64(),caption:CAPTION});return}
+ try{await navigator.clipboard.writeText(CAPTION)}catch(_){}
+ toast('Posting to the feed works inside the JoinLinks app. Caption copied, save the card and post it there.')}
+document.getElementById('sharejl').onclick=feedShare;
+document.getElementById('fabjl').onclick=e=>{e.stopPropagation();if(paused)pp.click();feedShare()};
 </script></body></html>
