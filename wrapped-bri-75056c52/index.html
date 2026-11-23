@@ -110,7 +110,7 @@ async function makeCard(){
  const ph=await load('nov_card.jpg');const w=920,h=w*ph.height/ph.width;
  x.save();x.beginPath();x.roundRect(80,560,w,h,40);x.clip();x.drawImage(ph,80,560,w,h);x.restore();
  x.fillStyle='#3a1a05';x.font='700 44px Helvetica, Arial';x.fillText('MY 2026 ON JOINLINKS',80,200);
- x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came for my people.',80,320);x.fillText('Started a book club.',80,425);
+ x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.font='900 70px Helvetica, Arial';x.fillText('Came to find my people.',80,300);x.fillText('Messed around and',80,385);x.fillText('created one.',80,470);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
  [['7%','top users for showing up'],['5','books, 5 meetings'],['54','people read with me']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
@@ -138,7 +138,7 @@ pp.onclick=e=>{e.stopPropagation();paused=!paused;held=paused;if(paused){heldAt=
 document.getElementById('fab').onclick=e=>{e.stopPropagation();if(paused)pp.click();document.getElementById('share').click();show(slides.length-1)};
 document.getElementById('back').onclick=e=>{e.stopPropagation();if(paused)pp.click();show(i-1)};
 
-const CAPTION="My 2026 on JoinLinks \ud83d\udd25 Came for my people. Started a book club.";
+const CAPTION="My 2026 on JoinLinks \ud83d\udd25 Came to find my people. Messed around and created one.";
 function inApp(){return !!(window.ReactNativeWebView||(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.joinlinks))}
 function toApp(msg){const j=JSON.stringify(msg);if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(j);else window.webkit.messageHandlers.joinlinks.postMessage(msg)}
 function b64(){return new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(blob)})}
