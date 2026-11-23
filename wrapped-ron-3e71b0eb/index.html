@@ -154,6 +154,6 @@ ctl.onclick=e=>{e.stopPropagation();mu.muted=!mu.muted;ctl.textContent=mu.muted?
  el.addEventListener('click',e=>{if(el.dataset.skip){delete el.dataset.skip;e.stopImmediatePropagation()}},true)});
 let paused=false;const pp=document.getElementById('pp');
 pp.onclick=e=>{e.stopPropagation();paused=!paused;held=paused;if(paused){heldAt=performance.now();mu.pause();slides[i].querySelector('video')?.pause();pp.textContent='▶'}else{t0+=performance.now()-heldAt;mu.play().catch(()=>{});slides[i].querySelector('video')?.play().catch(()=>{});pp.textContent='⏸'}};
-document.getElementById('fab').onclick=e=>{e.stopPropagation();if(paused)pp.click();show(slides.length-1);setTimeout(()=>document.getElementById('share').click(),400)};
+document.getElementById('fab').onclick=e=>{e.stopPropagation();if(paused)pp.click();document.getElementById('share').click();show(slides.length-1)};
 document.getElementById('back').onclick=e=>{e.stopPropagation();if(paused)pp.click();show(i-1)};
 </script></body></html>
