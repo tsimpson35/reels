@@ -44,7 +44,7 @@ p{font-size:20px;line-height:1.35;font-weight:500}
 <section class="slide" style="background:#000"><img class="bg" src="ybo0.jpg" alt="Young, bLAck and Outside members"><div class="shade"></div>
   <div class="k a" style="color:#7CE0B5">you built</div>
   <div style="margin-top:auto"><h1 class="a2">Young, bLAck &amp; Outside</h1>
-  <div class="stats a3" style="margin-top:16px"><div><b>62</b><span>Links hosted</span></div><div><b>480</b><span>people pulled up</span></div></div></div>
+  <div class="stats a3" style="margin-top:16px"><div><b>62</b><span>Links hosted</span></div><div><b>1,560</b><span>RSVPs</span></div></div></div>
 </section>
 
 <section class="slide" style="background:#1B1B3A" data-d="9000">
@@ -114,7 +114,7 @@ async function makeCard(){
  const ph=await load('jul_card.jpg');const w=920,h=w*ph.height/ph.width;
  x.save();x.beginPath();x.roundRect(80,560,w,h,40);x.clip();x.drawImage(ph,80,560,w,h);x.restore();
  x.fillStyle='#3a1a05';x.font='700 44px Helvetica, Arial';x.fillText('MY 2026 ON JOINLINKS',80,200);
- x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came to get outside.',80,320);x.fillText('Brought 480 people.',80,425);
+ x.fillStyle='#fff';x.font='900 92px Helvetica, Arial';x.fillText('Came to get outside.',80,320);x.fillText('1,560 RSVPs later.',80,425);
  x.fillStyle='#fff';x.font='800 64px Helvetica, Arial';
  const y=560+h+120;
  [['1%','top users on JoinLinks'],['62','Links hosted'],['#2','most-liked poster']].forEach((r,k)=>{x.font='900 96px Helvetica, Arial';x.fillText(r[0],80,y+k*150);x.font='700 46px Helvetica, Arial';x.fillText(r[1],330,y+k*150-8)});
@@ -142,7 +142,7 @@ pp.onclick=e=>{e.stopPropagation();paused=!paused;held=paused;if(paused){heldAt=
 document.getElementById('fab').onclick=e=>{e.stopPropagation();if(paused)pp.click();document.getElementById('share').click();show(slides.length-1)};
 document.getElementById('back').onclick=e=>{e.stopPropagation();if(paused)pp.click();show(i-1)};
 
-const CAPTION="My 2026 on JoinLinks \ud83d\udd25 Came to get outside. Brought 480 people.";
+const CAPTION="My 2026 on JoinLinks \ud83d\udd25 Came to get outside. 1,560 RSVPs later.";
 function inApp(){return !!(window.ReactNativeWebView||(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.joinlinks))}
 function toApp(msg){const j=JSON.stringify(msg);if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(j);else window.webkit.messageHandlers.joinlinks.postMessage(msg)}
 function b64(){return new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(blob)})}
