@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Your 2026 on JoinLinks</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;color:#fff;font-family:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;overflow:hidden}
+#app{position:fixed;inset:0;max-width:480px;margin:0 auto}
+.bars{position:absolute;top:calc(10px + env(safe-area-inset-top));left:10px;right:10px;display:flex;gap:4px;z-index:5}
+.bars div{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden}.bars i{display:block;height:100%;width:0;background:#fff}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:70px 28px 120px;animation:in .5s ease}
+.slide.on{display:flex}.slide>*{position:relative}
+.bg{position:absolute!important;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute!important;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.05) 35%,rgba(0,0,0,.78))}
+@keyframes in{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.slide.on .a{animation:up .6s ease both}.slide.on .a2{animation:up .6s .3s ease both}.slide.on .a3{animation:up .6s .6s ease both}.slide.on .a4{animation:up .6s .9s ease both}
+.k{font-size:15px;font-weight:700;text-transform:lowercase}
+h1{font-size:44px;line-height:1.02;font-weight:800;letter-spacing:-.02em}
+.huge{font-size:130px;font-weight:900;line-height:.9;letter-spacing:-.04em}
+p{font-size:20px;line-height:1.35;font-weight:500}
+.stats{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border-radius:20px;padding:18px 10px;text-align:center}
+.stats div+div{border-left:1px solid rgba(255,255,255,.2)}.stats b{display:block;font-size:36px;font-weight:900;line-height:1}.stats span{display:block;font-size:13px;font-weight:600;margin-top:6px;opacity:.85}
+.post{background:rgba(17,17,24,.72);backdrop-filter:blur(8px);border-radius:16px;padding:12px;margin-top:10px}.av.sm{width:28px;height:28px;border-width:0;font-size:12px}
+.row{display:flex;align-items:center;gap:12px;margin-top:12px}.av{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #E8762B;background:#E8762B;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800}
+.th{display:flex;gap:10px;margin-top:12px;align-items:flex-start}.th .av{width:38px;height:38px;border-width:0}.th>div:last-child{background:rgba(255,255,255,.08);border-radius:14px;padding:9px 12px;font-size:15px;line-height:1.35}.th b{display:block;font-size:13px;margin-bottom:2px}.th.r{margin-left:26px}
+.tap{position:absolute;top:0;bottom:0;z-index:4}.tap.l{left:0;width:30%}.tap.r{right:0;width:70%}
+#ctls{position:absolute;top:calc(22px + env(safe-area-inset-top));right:12px;z-index:7;display:flex;gap:8px}#ctls button{background:rgba(0,0,0,.45);border:0;color:#fff;border-radius:20px;width:40px;height:34px;font-size:16px}
+#fabs{position:absolute;left:12px;right:12px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:8;display:flex;gap:10px}#fabs[hidden]{display:none}#fabs button,.btn{flex:1;border:0;border-radius:40px;padding:15px 10px;font-size:16px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+#fab{background:#fff;color:#111}#fabjl{background:#E8762B;color:#fff}
+.btn{display:block;width:100%;margin-top:12px}
+#cardimg{width:70%;margin:14px auto 0;border-radius:16px;display:block;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+#start .btn{flex:none;width:auto;padding:18px 44px;margin:0}#startbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}#start>*:not(#startbg){position:relative}
+#start{position:absolute;inset:0;z-index:20;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:30px}
+#toast{position:absolute;left:20px;right:20px;bottom:calc(90px + env(safe-area-inset-bottom));z-index:9;background:rgba(17,17,17,.92);border-radius:14px;padding:12px;font-size:14px;text-align:center}
+</style></head>
+<body><div id="app">
+<div class="bars" id="bars"></div>
+<div id="slides"></div>
+<div class="tap l" id="prev"></div><div class="tap r" id="next"></div>
+<div id="ctls"><button id="back" aria-label="Back">⏮</button><button id="pp" aria-label="Pause">⏸</button><button id="mute" aria-label="Mute">🔊</button></div>
+<div id="fabs"><button id="fab">IG Story ↗</button><button id="fabjl">Post to JoinLinks</button></div>
+<div id="toast" hidden></div>
+<div id="start"><div style="font-size:15px;font-weight:700;color:#E8762B">joinlinks</div><h1 id="hello" style="font-size:38px">Your 2026 is ready</h1><button class="btn" style="background:#E8762B;color:#fff;width:auto;padding:18px 40px">Let's go ▶</button><div style="font-size:13px;opacity:.6">Sound on 🔊</div></div>
+<audio id="music" src="music.mp3" loop preload="auto"></audio>
+</div>
+<script>
+const CDN='https://d1rwsituijgodl.cloudfront.net/';
+const LOCAL=/^(127\.|localhost)/.test(location.hostname);
+const img=s=>!s?'':/^https?:/.test(s)?s:('img/'+s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>Number(n||0).toLocaleString('en-US');
+const clip=(s,n)=>{s=String(s||'').replace(/\[(cid|uid|lid):[^\]]+\]/g,'').replace(/\s+/g,' ').trim();return s.length>n?s.slice(0,n-1).trimEnd()+'…':s};
+const mon=d=>new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase();
+const av=(src,name,cls='av')=>src?`<img class="${cls}" src="${img(src)}" alt="">`:`<div class="${cls}">${esc(name[0])}</div>`;
+
+function slidesFor(r){
+  const S=[],first=r.user.name.split(' ')[0],builder=r.persona==='builder';
+  const hero=r.photos[0]?img(r.photos[0]):'';
+  S.push(`<section class="slide" style="background:#000">${r.user.pictureSrc?`<img class="bg" src="${img(r.user.pictureSrc)}" alt=""><div class="shade"></div>`:''}
+    <div class="k a">your ${r.year} on joinlinks</div>
+    <div style="margin-top:auto"><h1 class="a2">${esc(first)},<br>you hopped on JoinLinks looking for ${builder?'community':'the vibes'}.</h1><p class="a3" style="margin-top:18px">${builder?'Look what you built.':'Look where it took you.'}</p></div></section>`);
+  if(builder) S.push(`<section class="slide" style="background:#000">${hero?`<img class="bg" src="${hero}" alt=""><div class="shade"></div>`:''}
+    <div class="k a" style="color:#7CE0B5">you built</div>
+    <div style="margin-top:auto"><h1 class="a2">${r.hosting.links} Links hosted</h1>
+    <div class="stats a3" style="margin-top:16px"><div><b>${fmt(r.hosting.rsvps)}</b><span>RSVPs</span></div><div><b>${fmt(r.hosting.uniqueGuests)}</b><span>people pulled up</span></div></div>
+    ${r.hosting.biggest?`<p class="a4" style="margin-top:14px;font-size:17px">Biggest: ${esc(clip(r.hosting.biggest.name,50))}, ${fmt(r.hosting.biggest.rsvps)} RSVPs.</p>`:''}</div></section>`);
+  const t=r.feed.topThread;
+  if(t&&t.replies.length) S.push(`<section class="slide" style="background:#1B1B3A" data-d="9000">
+    <div class="k a" style="color:#E8762B">${mon(t.date)}</div>
+    <div class="th a2">${av(r.user.pictureSrc,first)}<div><b>${esc(first)}</b>${esc(clip(t.text,110))}</div></div>
+    ${t.replies.slice(0,2).map((x,i)=>`<div class="th r a${3+i}">${av(x.pictureSrc,x.name)}<div><b>${esc(x.name)}</b>${esc(clip(x.text,90))}</div></div>`).join('')}
+    <p class="a4" style="margin-top:auto">People tapped in with you.</p></section>`);
+  const people=builder?r.hosting.regulars:r.people.dayOnes;
+  if(people.length) S.push(`<section class="slide" style="background:#1B1B3A">
+    <div class="k a" style="color:#E8762B">${builder?'your regulars':'your day ones'}</div>
+    <p class="a2" style="margin-top:14px">${builder?'They kept coming back.':'You kept running into them.'}</p>
+    <div class="a3">${people.slice(0,6).map(x=>`<div class="row">${av(x.pictureSrc,x.name)}<div><b style="font-size:18px">${esc(x.name)}</b><div style="font-size:14px;opacity:.8">${x.times} Links together</div></div></div>`).join('')}</div>
+    <p class="a4" style="margin-top:auto">People tapped in with you, again and again.</p></section>`);
+  if(r.headline) S.push(`<section class="slide" style="background:#0E0E14">
+    <div class="k a" style="color:#FFC845">your ${r.year} ranking</div>
+    <div style="margin:auto 0;text-align:center" class="a2"><div style="font-size:30px;font-weight:900">TOP</div><div class="huge" style="font-size:150px;color:#FFC845">${r.headline.topPercent}%</div><p>of users on JoinLinks for ${esc(r.headline.label)}</p></div>
+    <div class="stats a3">${r.ranks.filter(x=>x.topPercent<=15).slice(0,3).map(x=>`<div><b>#${x.rank}</b><span>${esc(x.label)}</span></div>`).join('')}</div></section>`);
+  if(r.feed.posts) S.push(`<section class="slide" style="background:#000">${r.photos[1]||hero?`<img class="bg" src="${img(r.photos[1]||r.photos[0])}" alt=""><div class="shade"></div>`:''}
+    <div class="k a">you kept the feed lit</div>
+    <div style="margin-top:16px">${(r.feed.topPosts||[]).slice(0,2).map((p,k)=>`<div class="post a${2+k}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">${av(r.user.pictureSrc,first,'av sm')}<b style="font-size:14px">${esc(first)}</b><span style="font-size:12px;opacity:.6">${mon(p.date)}</span></div>
+      <div style="display:flex;gap:10px"><div style="flex:1;font-size:14px;line-height:1.35">${esc(clip(p.text,95))}</div>${p.imageSrc?`<img src="${img(p.imageSrc)}" alt="" style="width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none">`:''}</div>
+      <div style="font-size:13px;opacity:.75;margin-top:6px">♥ ${fmt(p.likes)} &nbsp; 💬 ${fmt(p.comments)}</div></div>`).join('')}</div>
+    <div class="stats a4" style="margin-top:auto"><div><b>${fmt(r.feed.posts)}</b><span>posts</span></div><div><b>${fmt(r.feed.likes)}</b><span>likes</span></div><div><b>${fmt(r.feed.comments)}</b><span>comments</span></div></div></section>`);
+  if(r.topInterests.length) S.push(`<section class="slide" style="background:#6B2FD6">${r.photos[2]?`<img class="bg" src="${img(r.photos[2])}" alt=""><div class="shade" style="background:linear-gradient(180deg,rgba(60,20,140,.75),rgba(60,20,140,.45) 50%,rgba(0,0,0,.8))"></div>`:''}
+    <div class="k a">your vibe</div>
+    <h1 class="a2" style="margin-top:24px">${esc(r.topInterests[0].name)}</h1>
+    <div class="a3" style="margin-top:18px">${r.topInterests.map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.2);padding:8px 0"><span>${esc(x.name)}</span><b>${x.count}</b></p>`).join('')}</div>
+    <p class="a4" style="margin-top:auto">${r.going.links} Links you pulled up to${r.going.checkedIn?`, ${r.going.checkedIn} checked in`:''}.</p></section>`);
+  S.push(`<section class="slide" style="background:#E8762B" id="last">
+    <div class="k a" style="text-align:center">post it, you earned it</div>
+    <img id="cardimg" class="a2" alt="Your shareable ${r.year} card">
+    <button class="btn a3" id="share" style="background:#111;color:#fff">Share to Instagram Story</button>
+    <button class="btn a3" id="sharejl" style="background:#1B1B3A;color:#fff">Post to JoinLinks feed</button></section>`);
+  return S.join('');
+}
+
+function cardLines(r){
+  const b=r.persona==='builder';
+  const head=b?['Came for community.','Built one.']:['Came for the vibes.','Found my people.'];
+  const stats=[];
+  if(r.headline) stats.push([`${r.headline.topPercent}%`,`top for ${r.headline.label}`]);
+  if(b) stats.push([fmt(r.hosting.rsvps),'RSVPs at my Links']);
+  if(r.feed.likes) stats.push([fmt(r.feed.likes),'likes on my posts']);
+  if(r.going.links) stats.push([String(r.going.links),'Links I pulled up to']);
+  return {head,stats:stats.slice(0,3)};
+}
+function load(src){return new Promise(res=>{if(!src)return res(null);const im=new Image();im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=()=>res(null);im.src=src})}
+let blob,CAPTION='';
+async function makeCard(r){
+  const c=document.createElement('canvas');c.width=1080;c.height=1920;const x=c.getContext('2d');
+  x.fillStyle='#E8762B';x.fillRect(0,0,1080,1920);
+  const {head,stats}=cardLines(r);CAPTION=`My ${r.year} on JoinLinks 🔥 ${head.join(' ')}`;
+  x.fillStyle='#3a1a05';x.font='700 44px Helvetica, Arial';x.fillText(`MY ${r.year} ON JOINLINKS`,80,200);
+  x.fillStyle='#fff';x.font='900 84px Helvetica, Arial';head.forEach((l,i)=>x.fillText(l,80,320+i*100));
+  const ph=await load(img(r.photos[0]||r.user.pictureSrc));
+  if(ph){const w=920,h=Math.min(690,w*ph.height/ph.width);x.save();x.beginPath();x.roundRect(80,560,w,h,40);x.clip();x.drawImage(ph,0,Math.max(0,(ph.height-ph.width*h/w)/2),ph.width,ph.width*h/w,80,560,w,h);x.restore()}
+  stats.forEach((s,i)=>{const y=1400+i*130;x.font='900 88px Helvetica, Arial';x.fillText(s[0],80,y);x.font='700 42px Helvetica, Arial';x.fillText(s[1],330,y-10)});
+  x.fillStyle='#111';x.beginPath();x.roundRect(80,1760,920,100,50);x.fill();x.fillStyle='#fff';x.font='800 44px Helvetica, Arial';x.textAlign='center';x.fillText('joinlinks.app',540,1826);
+  try{blob=await new Promise(res=>c.toBlob(res,'image/png'));document.getElementById('cardimg').src=URL.createObjectURL(blob)}catch(e){}
+}
+
+let slides=[],fills=[],i=0,t0=0,raf,held=false,heldAt=0;const DUR=5200;
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('on',k===i));fills.forEach((f,k)=>f.style.width=k<i?'100%':'0');t0=performance.now();cancelAnimationFrame(raf);const last=i===slides.length-1;document.querySelectorAll('.tap').forEach(e=>e.style.display=last?'none':'block');document.getElementById('fabs').hidden=last;tick()}
+function tick(){if(held){raf=requestAnimationFrame(tick);return}const p=(performance.now()-t0)/(+slides[i].dataset.d||DUR);fills[i].style.width=Math.min(100,p*100)+'%';if(p>=1&&i<slides.length-1){show(i+1);return}raf=requestAnimationFrame(tick)}
+function inApp(){return !!((window.joinlinks&&window.joinlinks.postMessage)||window.ReactNativeWebView||(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.joinlinks))}
+function toApp(m){if(window.joinlinks&&window.joinlinks.postMessage)return window.joinlinks.postMessage(JSON.stringify(m));window.ReactNativeWebView?window.ReactNativeWebView.postMessage(JSON.stringify(m)):window.webkit.messageHandlers.joinlinks.postMessage(m)}
+const b64=()=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(blob)});
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.hidden=false;clearTimeout(e._t);e._t=setTimeout(()=>e.hidden=true,3500)}
+async function shareIG(){if(!blob)return toast('Card is still loading.');if(inApp())return toApp({type:'shareStory',image:await b64(),link:'https://joinlinks.app'});const f=new File([blob],'my-joinlinks-wrapped.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f]})}catch(e){}}else toast('Open this in Safari or Chrome on your phone to share.')}
+async function shareJL(){if(inApp()&&blob)return toApp({type:'shareFeed',image:await b64(),caption:CAPTION});try{await navigator.clipboard.writeText(CAPTION)}catch(e){}toast('Posting to the feed works inside the JoinLinks app. Caption copied.')}
+
+(async()=>{
+  const who='daveon';
+  const r=await (await fetch(`data/${encodeURIComponent(who)}.json`)).json();
+  document.title=`${r.user.name.split(' ')[0]}'s ${r.year} on JoinLinks`;
+  if(r.user.pictureSrc)document.getElementById('start').insertAdjacentHTML('afterbegin',`<img id="startbg" src="${img(r.user.pictureSrc)}" alt="">`);
+  document.getElementById('hello').textContent=`${r.user.name.split(' ')[0]}, your ${r.year} is ready`;
+  document.getElementById('slides').innerHTML=slidesFor(r);
+  slides=[...document.querySelectorAll('.slide')];
+  const bars=document.getElementById('bars');slides.forEach(()=>{const d=document.createElement('div');d.innerHTML='<i></i>';bars.appendChild(d)});fills=[...bars.querySelectorAll('i')];
+  document.getElementById('share').onclick=shareIG;document.getElementById('sharejl').onclick=shareJL;
+  makeCard(r);
+})();
+const mu=document.getElementById('music'),pp=document.getElementById('pp');
+document.getElementById('start').onclick=()=>{mu.volume=.8;mu.play().catch(()=>{});document.getElementById('start').remove();show(0)};
+document.getElementById('next').onclick=()=>show(i+1);document.getElementById('prev').onclick=()=>show(i-1);
+document.getElementById('back').onclick=e=>{e.stopPropagation();if(held)pp.click();show(i-1)};
+pp.onclick=e=>{e&&e.stopPropagation();held=!held;if(held){heldAt=performance.now();mu.pause();pp.textContent='▶'}else{t0+=performance.now()-heldAt;mu.play().catch(()=>{});pp.textContent='⏸'}};
+document.getElementById('mute').onclick=e=>{e.stopPropagation();mu.muted=!mu.muted;e.target.textContent=mu.muted?'🔇':'🔊'};
+document.getElementById('fab').onclick=e=>{e.stopPropagation();shareIG();show(slides.length-1)};
+document.getElementById('fabjl').onclick=e=>{e.stopPropagation();shareJL()};
+</script></body></html>
