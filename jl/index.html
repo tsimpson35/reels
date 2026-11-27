@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>try{var q=new URLSearchParams(location.search),th=q.get("theme");if(th==="dark"||th==="light"){document.documentElement.setAttribute("data-theme",th);document.documentElement.style.colorScheme=th;}if(q.get("embed"))document.documentElement.classList.add("embed");}catch(e){}</script><style>.embed body{background:transparent}.embed header{border-bottom:0;background:transparent;padding:0 0 14px;justify-content:flex-start}.embed header b{display:none}.embed iframe{background:transparent}.embed #chg{padding:4px 0 60px}.embed .wrap{max-width:none;margin:0}.embed h1{display:none}</style>
+<title>JoinLinks V3 Review</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#EFEAE6;--card:#FFFFFF;--ink:#1B1716;--sub:#6F655E;--line:#DDD5CE;--acc:#A5391C;--soft:#F6DED3;--good:#1B7F4B;--goodbg:#E3F4EA;--warn:#8A5F1B;--warnbg:#FBF0DC;--bad:#B3261E;--badbg:#FBE5E3;--new:#5B3FB8;--newbg:#EEE9FB}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#151211;--card:#1F1B19;--ink:#F3EEE9;--sub:#A99D95;--line:#332C29;--acc:#F0803F;--soft:#3E2417;--good:#5CBE88;--goodbg:#16291F;--warn:#E3B45C;--warnbg:#3A2F16;--bad:#F08A80;--badbg:#3A1C1A;--new:#B7A2F5;--newbg:#262040}}
+:root[data-theme="dark"]{--bg:#151211;--card:#1F1B19;--ink:#F3EEE9;--sub:#A99D95;--line:#332C29;--acc:#F0803F;--soft:#3E2417;--good:#5CBE88;--goodbg:#16291F;--warn:#E3B45C;--warnbg:#3A2F16;--bad:#F08A80;--badbg:#3A1C1A;--new:#B7A2F5;--newbg:#262040}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Poppins,"Trebuchet MS",system-ui,sans-serif;display:flex;flex-direction:column;height:100dvh;overflow:hidden}
+header{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
+header b{font-size:15px;white-space:nowrap}
+.tabs{display:flex;gap:4px;padding:4px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
+.tabs button{font:inherit;font-size:13.5px;font-weight:600;color:var(--sub);background:none;border:0;padding:8px 16px;border-radius:18px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--acc);color:#fff}
+.tabs button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+main{flex:1 1 auto;min-height:0;position:relative}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg)}
+#chg{position:absolute;inset:0;overflow-y:auto;padding:22px 16px 60px}
+.wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1{font-size:26px;line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.3px}
+.lead{margin:0;color:var(--sub);font-size:14.5px;line-height:1.55;max-width:65ch}
+.sum{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:9px;white-space:nowrap}
+.fix{background:var(--badbg);color:var(--bad)}.simp{background:var(--warnbg);color:var(--warn)}.keep{background:var(--goodbg);color:var(--good)}.nw{background:var(--newbg);color:var(--new)}
+h2{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--sub);margin:16px 0 0;font-weight:700}
+.row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px}
+.row img{width:112px;border-radius:12px;display:block;border:1px solid var(--line);cursor:zoom-in}
+.row .noimg{width:112px;aspect-ratio:9/16;border-radius:12px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--sub);text-align:center;padding:8px}
+.body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.body h3{margin:0;font-size:16px;line-height:1.3;display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cmp div{border-radius:14px;padding:10px 12px;font-size:13.5px;line-height:1.5;background:var(--bg)}
+.cmp small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--sub);margin-bottom:3px}
+.cmp .want{background:var(--soft)}
+.cmp .want small{color:var(--acc)}
+.keeps{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 16px}
+.keeps div{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
+.keeps div:last-child{border-bottom:0}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out}
+#lb img{max-height:92vh;max-width:92vw;border-radius:18px}
+@media (max-width:560px){header b{display:none}header{justify-content:center}.cmp{grid-template-columns:minmax(0,1fr)}.row{grid-template-columns:84px minmax(0,1fr)}.row img,.row .noimg{width:84px}h1{font-size:22px}}
+.row{grid-template-columns:236px minmax(0,1fr)}.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}.pair figure{margin:0;display:flex;flex-direction:column;gap:5px}.pair img{width:100%;border-radius:12px;display:block;border:1px solid var(--line);cursor:zoom-in}.pair .noimg{width:100%;aspect-ratio:390/844;border-radius:12px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--sub);text-align:center;padding:8px}.pair figcaption{font-size:10.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--sub);text-align:center}.pair figcaption.nw2{color:var(--acc)}@media (max-width:560px){.row{grid-template-columns:minmax(0,1fr)}.pair{max-width:300px}}
+</style>
+<header><b>JoinLinks V3 review</b><div class="tabs" role="tablist"><button class="on" data-t="app" role="tab">Prototype</button><button data-t="chg" role="tab">What changed</button><button data-t="docs" role="tab">Moderation plan</button><button data-t="vids" role="tab">Videos</button></div></header>
+<main>
+<iframe id="app" src="v3.html" title="JoinLinks V3 prototype"></iframe>
+<div id="chg" hidden><div class="wrap">
+<h1>Matt's build, and what we want instead</h1>
+<p class="lead">Matt built a great base, and these are the tweaks that take it further. Each one shows Matt's version next to ours. Tap a picture to make it bigger. Anything not on this list stays how he built it.</p>
+<div class="sum"><span class="pill fix">Fix · Quick win</span><span class="pill simp">Simplify · Make it easier</span><span class="pill nw">New · New idea</span><span class="pill keep">Keep · Love it, keeping it</span></div>
+<p class="lead" id="count"></p>
+<div id="rows"></div>
+<h2>Keep exactly as built</h2>
+<div class="keeps">
+<div><b>Home.</b> Avatar and logo header, search bar, For You / Near me / Saved, the "Hey Terence · Here is what LA is doing." greeting, the "Popular right now" rail with its See all count, the rails in order, and See all into the dark flyer list.</div>
+<div><b>Feed.</b> Stories row, "What's the move?" composer, badges, faces on the left with actions on the right, comments "Off" state, Repost sheet.</div>
+<div><b>Create a Link.</b> Free / Sell tickets / Ticket link, the date, time, place and description fields, More options open by default with the same rows and toggles, Preview, Post Link, Save as draft.</div>
+<div><b>Community gating.</b> About us card with one Join, then Join the chat, four tabs, and Leave in the dots menu.</div>
+<div><b>Share sheet.</b> Post to feed, Instagram Story, Copy link, More, Invite from your contacts.</div>
+<div><b>Venue add-on costs.</b> His idea. Kept and shown as Add-ons on every listing.</div>
+<div><b>Colors, type and the dock.</b> The prototype now uses his palette and the Marketplace label.</div>
+</div>
+<h2>The rules behind these changes</h2>
+<div class="keeps">
+<div><b>One horizontal bar per screen.</b> Never two rows of sideways tabs or pickers stacked. A second choice becomes its own screen or a sheet.</div>
+<div><b>No icon carries meaning alone.</b> If it is not obvious, it gets a word: Map, Sort &amp; filter, the dock labels.</div>
+<div><b>One icon, one meaning.</b> Envelope is inbox. Bubble is comments and chat. Sparkle is AI only.</div>
+<div><b>One door to each place.</b> Nothing lives in both the drawer and Settings. No second Home.</div>
+<div><b>Plus makes the thing.</b> A Link everywhere, the listing chooser on Marketplace. No question before the form unless there is no obvious default.</div>
+<div><b>Hide what is empty.</b> Zero counts, empty "Send to", role tabs with nothing in them.</div>
+<div><b>Show a real price and a real time.</b> Never "Paid", "From $0" or midnight for an unknown time.</div>
+</div>
+<h2>Not in the recording, still to review</h2>
+<div class="keeps">
+<div>Onboarding, checkout, the wallet and ticket page, refunds on both sides, payouts and Stripe setup, profile and edit profile, the map, community settings and money, hosting tools, dark mode.</div>
+<div>The prototype has all of these. Send a recording of each and they get the same treatment.</div>
+</div>
+<h2>Questions for Matt</h2>
+<div class="keeps">
+<div><b>What is inside More?</b> It was cut from the drawer because nothing said what it holds.</div>
+<div><b>What is News?</b> It was cut from Settings for the same reason.</div>
+<div><b>Is Ask JoinLinks AI its own chat screen?</b> In the prototype that row opens Tweak your algorithm as a stand-in.</div>
+<div><b>Why are live payments off?</b> If it is an App Store rule, the Link page needs a plan for where people buy.</div>
+<div><b>Can the See all date headers match the live app exactly?</b> The prototype's format is a best guess.</div>
+</div>
+</div></div>
+<div id="docs" hidden><div class="wrap">
+<h1>Feed, moderation and Boost</h1>
+<p class="lead">How posts get labeled, how For You ranks them, location, Boost, group chats and the creator program.</p>
+<p><a href="https://claude.ai/artifact/BdEz6UhYdr4ZB3LwMF4Jof" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:24px;background:#A5391C;color:#fff;font-weight:600;text-decoration:none">Open the full plan for Matt &#8599;</a></p>
+<h2>At a glance</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+<figure style="margin:0"><img src="stills/feed_t99.jpg" alt="" style="width:100%;border-radius:12px"><figcaption>Six paths every post can take</figcaption></figure>
+<figure style="margin:0"><img src="stills/feed_t79.jpg" alt="" style="width:100%;border-radius:12px"><figcaption>Location: two viewers, two feeds</figcaption></figure>
+<figure style="margin:0"><img src="stills/feed_t69.jpg" alt="" style="width:100%;border-radius:12px"><figcaption>Boosted post, labeled Promoted</figcaption></figure>
+<figure style="margin:0"><img src="stills/feed_t144.jpg" alt="" style="width:100%;border-radius:12px"><figcaption>Review list, worst first</figcaption></figure>
+<figure style="margin:0"><img src="stills/chat_t64.jpg" alt="" style="width:100%;border-radius:12px"><figcaption>Admin approves promo in the chat</figcaption></figure>
+<figure style="margin:0"><img src="stills/feed_t161.jpg" alt="" style="width:100%;border-radius:12px"><figcaption>What does well</figcaption></figure>
+</div></div></div>
+<div id="vids" hidden><div class="wrap">
+<h1>Walkthrough videos</h1>
+<p class="lead">Two short videos. Press play on either. They use real member posts, so keep them internal.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;margin-top:10px">
+<div><h2 style="margin-top:0">1. The feed, end to end · 2:42</h2><p class="lead" style="margin:0 0 10px">Posting, Claude's labels, ranking, location, Boost and every moderation pathway.</p><video src="videos/JoinLinks-feed-moderation.mp4#t=0.1" controls playsinline preload="metadata" poster="stills/feed_t99.jpg" style="width:100%;border-radius:16px;background:#000"></video></div>
+<div><h2 style="margin-top:0">2. Group chats · 1:24</h2><p class="lead" style="margin:0 0 10px">Host tools, admin approval for promo, spam, money asks and member tools.</p><video src="videos/JoinLinks-groupchat-moderation.mp4#t=0.1" controls playsinline preload="metadata" poster="stills/chat_t64.jpg" style="width:100%;border-radius:16px;background:#000"></video></div>
+</div></div></div>
+</main>
+<div id="lb"><img alt=""></div>
+<script>
+const G=[["1. First up: making it even easier", [["simp", "021", "Let plus go straight to Create a Link", "Plus opens a menu, then the form asks again. Two questions before you can type.", "Plus goes straight to Create a Link, every time.", "create"], ["simp", "031", "Rename the create bar to Link / Community / Marketplace", "It says Venue, even when you're listing a DJ or a class.", "Change it to Link / Community / Marketplace.", "create"], ["simp", "explore", "Fold Explore into Home", "It overlaps a lot with Home.", "Delete it. The search bar on Home does the job.", "search"], ["simp", "explore", "Give AI one home", "There are three ways into the same AI, which can feel like a lot.", "One orange Ask button next to the search bar. The AI screen is just a question box and three suggestions.", "ai"], ["simp", "033", "Trim Marketplace to one row of tabs", "Four rows of buttons before you see a single listing.", "One row: Venues / Services / Classes. Then one Sort & filter button.", "market"], ["simp", "drawer", "Lighten the side menu", "Explore, Map, More and Close overlap with other spots.", "Just: Tickets, Saved, Liked, Hosting tools, Settings, Help.", "drawer"], ["simp", "001", "Move Saved into the side menu", "Saved is a tab on every page, even when it's empty.", "Saved and Liked live in the side menu, like Instagram.", "drawer"], ["simp", "settings", "Keep Settings to just settings", "Eleven rows, some copied from the side menu.", "Six rows, only real settings.", "settings"], ["simp", "001", "Label the Map button", "A plain pin next to the search bar.", "Take it off Home. Put a \"Map\" button on the See all list.", "seeall"], ["simp", "001", "Let Home use For You / Near me alone", "Home already has For You / Near me, so it's doubled up.", "Remove it from Home.", "home"], ["simp", "001", "Make Tweak your algorithm one short screen", "A long page of sections.", "One question, \"What are you into?\" Type it or tap a few picks. Save.", "prefs"], ["simp", "034", "Hide the zero counts", "New folks see zeros before they join anything.", "Hide it until they're actually in one.", "comms0"], ["simp", "022", "Move Drafts", "It crowds the top bar.", "Put it on the flyer. Hide it when there are none.", "create"], ["simp", "014", "Open stories straight to photos", "A menu with one Photo button first.", "Open straight to your photos.", "story"], ["simp", "028", "Trim the interest list to 9", "22 options.", "Cut it to 9.", "newcomm"]]], ["2. Then: new ideas to build on what's here", [["new", "031", "Listing on Marketplace: pick the type first", "One form with a small type picker buried in it.", "First screen asks \"What are you listing?\" with three big cards: venue, service, class. Then the form for just that one.", "chooser"], ["new", "031", "Each listing type gets its own form", "Every listing asks guests and price per hour.", "Venues ask guests and hourly price. Services ask crowd size. Classes ask spots and price per person.", "listclass"], ["new", "049", "Booking works like the website: you make an offer", "The Book button is there, the flow just isn't yet.", "Pick a date, hours and your offer, then send. No payment yet.", "offer"], ["new", "049", "What happens after you send an offer", "Nothing shown.", "\"Offer sent!\" Then a button to turn it into an event on JoinLinks. Your offers show at the top of Marketplace.", "offersent"], ["new", "033", "One filter screen with everything", "Filter button, nothing inside it shown.", "Search, sort, budget, group size and \"only my saved\" all in one place. Same orange filter button everywhere in the app.", "filter"], ["new", "033", "Marketplace cards should look like the website", "A slightly different style from the site.", "Same look as the site: neighborhood on the photo, price, Submit an Offer.", "market"], ["new", "049", "Venue page should look like the website", "Room to add more of the site's info.", "Photos, size, capacity, what's included, add-ons, how it works.", "venue2"], ["new", "033", "Fill in the Services tab", "Ready for content.", "DJs, photographers, caterers, bartenders.", "services"], ["new", "033", "Fill in the Classes tab", "Ready for content.", "Priced per person, with a Book a spot button.", "classes"], ["new", "022", "Events can be Tentative or Date TBD", "Not built yet.", "Hosts can post before the date is locked. People tap Notify me and get told when it's set.", "tentative"], ["new", "", "Turn a post into an event", "Not built yet.", "If a post sounds like a plan, one button at the bottom says \"Make this a Link?\"", "feedlink"]]], ["3. After that: quick wins", [["fix", "006", "Let's turn on Get tickets", "Right now the button is grey with a note that payments aren't on yet.", "Tapping Get tickets opens checkout: pick a ticket, add a coupon, see the total, pay, and the ticket lands in your wallet. If payments have to stay off for now, say where to buy instead of showing a dead button.", "checkout"], ["fix", "044", "Help Join go through smoothly", "Right now Join turns grey and a small error shows under the bottom bar, so the questions don't get a chance to show.", "Join opens the entry questions. If something goes wrong, show a clear pop-up and let them tap Join again.", "join"], ["fix", "049", "Add a way to book on the venue page", "The only Book button is back on the list.", "A bar stuck to the bottom of the venue page with the price and a Submit an Offer button.", "venue"], ["fix", "006", "Show the real start time", "A 7 PM show says 12:00 AM.", "Bring in the real start time. If we don't have one, mark it Tentative instead of showing midnight.", "linktop"], ["fix", "explore", "Show the actual price", "Cards say \"Paid\" and the event page says \"20 USD\".", "Say \"From $20\", or \"Free\" if it's free. Never \"Paid\" or \"From $0\".", "seeall"], ["fix", "006", "Show who's going and where it is", "No going count, no faces, no map.", "Show faces with \"22 going\", spots left, and a small map that says the address comes after you RSVP.", "linktop"], ["fix", "022", "Give Create a Link a friendly start", "Blank flyer spot, empty date and time.", "Show a starter flyer, and fill in next Saturday at 7 PM so people aren't starting from nothing.", "create"], ["fix", "007", "Shorten long descriptions", "The whole description runs on for screens.", "Show five lines, then Read more.", "link"], ["fix", "006", "Add dates to See all", "One long list of flyers with no dates.", "Put a date above each day, like \"Friday, Sep 11\". Events with no date go at the end under \"Date TBD\".", "seeall"], ["fix", "033", "Name listings the way the website does", "Listings show a business name and a tag like \"Birthday party\".", "Name it like the website does, \"Studio in Inglewood\". The tag shows the neighborhood.", "market"], ["fix", "032", "Give the empty inbox a next step", "It's blank for now.", "One line and a Start a chat button.", "inbox"], ["fix", "034", "Use a logo when there's no cover", "A grey block fills the space.", "Use their logo or their first event flyer instead.", "comms0"], ["fix", "010", "Tidy up the share sheet", "\"Nothing here yet\" takes up half of it.", "Hide that part until there's someone to send to.", "share"], ["fix", "001", "Switch to the envelope inbox icon", "It's a chat bubble, which we also use for comments.", "Use our envelope icon with the red unread number.", "home"]]], ["4. Love these, keeping them", [["keep", "049", "Add-ons on listings", "Matt's list of extras with prices.", "Great idea, keeping it. Just calling it Add-ons.", "venue2"]]]];
+const L={fix:'Fix',simp:'Simplify',nw:'New',keep:'Keep'};
+document.getElementById('rows').innerHTML=G.map(([t,rs])=>`<h2>${t}</h2>`+rs.map(([k,f,h,a,b,n])=>`<div class="row" style="margin-top:10px"><div class="pair"><figure>${f?`<img src="matt/m_${f}.jpg" alt="Matt's build" loading="lazy">`:`<div class="noimg">Not in his build</div>`}<figcaption>Old</figcaption></figure><figure><img src="new/n_${n}.jpg" alt="New mockup" loading="lazy"><figcaption class="nw2">New</figcaption></figure></div><div class="body"><h3><span class="pill ${k==='new'?'nw':k}">${L[k==='new'?'nw':k]}</span><span>${h}</span></h3><div class="cmp"><div><small>Matt's build</small>${a}</div><div class="want"><small>What we want</small>${b}</div></div></div></div>`).join('')).join('');
+(()=>{const c={};let n=0;G.forEach(g=>g[1].forEach(r=>{c[r[0]]=(c[r[0]]||0)+1;n++;}));document.getElementById('count').innerHTML='<b style="color:var(--ink)">'+n+' items.</b> '+(c.fix||0)+' to fix, '+(c.simp||0)+' to simplify, '+(c.nw||c['new']||0)+' new, '+(c.keep||0)+' kept and called out.';})();
+const lb=document.getElementById('lb');
+document.getElementById('rows').addEventListener('click',e=>{if(e.target.tagName==='IMG'){lb.firstElementChild.src=e.target.src;lb.style.display='flex';}});
+lb.onclick=()=>lb.style.display='none';
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));const t=b.dataset.t;document.getElementById('chg').hidden=t!=='chg';document.getElementById('docs').hidden=t!=='docs';document.getElementById('vids').hidden=t!=='vids';document.getElementById('app').style.display=t==='app'?'block':'none';document.querySelectorAll('#vids video').forEach(v=>{if(t!=='vids')v.pause()});});
+</script>
+
+</html>

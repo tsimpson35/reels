@@ -1,0 +1,38 @@
+<style>
+  body{font:13px/1.45 Inter,system-ui,sans-serif;margin:0;padding:16px;color:#1B1716;background:#fff}
+  h1{font-size:15px;margin:0 0 4px}
+  p{margin:0 0 12px;color:#6F655E}
+  button{width:100%;height:38px;border:0;border-radius:19px;background:#A5391C;color:#fff;font:600 13px Inter,system-ui,sans-serif;cursor:pointer}
+  button:disabled{opacity:.5;cursor:default}
+  #log{margin-top:12px;font-size:12px;color:#6F655E;max-height:150px;overflow:auto;white-space:pre-line}
+  label{display:block;font-size:11px;font-weight:600;color:#8A7F78;margin:0 0 4px}
+  input{width:100%;box-sizing:border-box;height:30px;border:1px solid #DDD5CE;border-radius:8px;padding:0 8px;font-size:12px;margin-bottom:12px}
+</style>
+<h1>JoinLinks Screens</h1>
+<p>Builds every 3.0 screen as real layers on this page, then lays each change out with Matt's old screen next to the new one.</p>
+<label for="base">Screens from</label>
+<input id="base" value="https://joinlinks-hub.vercel.app/designs/figma/">
+<button id="go">Build the 3.0 designs</button>
+<div id="log"></div>
+<script>
+const log = t => { const l = document.getElementById('log'); l.textContent += t + '\n'; l.scrollTop = l.scrollHeight; };
+let resolveBuilt = null;
+onmessage = e => { const m = e.data.pluginMessage || {}; if (m.type === 'built' && resolveBuilt) { resolveBuilt(); resolveBuilt = null; } if (m.type === 'log') log(m.text); if (m.type === 'done') { log('Done.'); document.getElementById('go').disabled = false; } };
+const send = msg => new Promise(r => { resolveBuilt = r; parent.postMessage({ pluginMessage: msg }, '*'); });
+document.getElementById('go').onclick = async () => {
+  const btn = document.getElementById('go'); btn.disabled = true; document.getElementById('log').textContent = '';
+  const base = document.getElementById('base').value.replace(/\/?$/, '/');
+  try {
+    const index = await (await fetch(base + 'index.json')).json();
+    const board = await (await fetch(base + 'board.json')).json();
+    await send({ type: 'start', count: index.length });
+    for (let i = 0; i < index.length; i++) {
+      const s = index[i]; log('Building ' + s.name + ' (' + (i + 1) + ' of ' + index.length + ')');
+      const data = await (await fetch(base + s.key + '.json')).json();
+      await send({ type: 'screen', key: s.key, name: s.name, data, i });
+    }
+    log('Laying out the changes');
+    await send({ type: 'board', board });
+  } catch (e) { log('Error: ' + e.message); btn.disabled = false; }
+};
+</script>

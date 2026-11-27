@@ -1,0 +1,13 @@
+{
+  "name": "JoinLinks Screens",
+  "id": "joinlinks-screens-local",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["https://joinlinks-hub.vercel.app"],
+    "reasoning": "Loads the JoinLinks prototype screens published on the team hub."
+  }
+}
